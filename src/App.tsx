@@ -242,47 +242,63 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
 function Home({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-teal-50/50">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_80%_0%,rgba(13,148,136,0.12),transparent)]" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:py-24">
-          <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-3.5 py-1.5 shadow-sm">
+      {/* Hero with full background */}
+      <section className="relative min-h-[80vh] overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/hero-bg.jpg" alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-teal-900/50" />
+        </div>
+        <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-4 py-16 sm:px-6 lg:py-24">
+          <div className="max-w-2xl">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-300/40 bg-teal-500/20 px-3.5 py-1.5 backdrop-blur">
               <span className="text-sm">🇹🇿</span>
-              <span className="text-xs font-semibold text-teal-800">Made in Tanzania · Rent anything, anytime</span>
+              <span className="text-xs font-semibold text-teal-100">Made in Tanzania · Rent anything, anytime</span>
             </div>
-            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
               Rent anything.
               <br />
-              <span className="text-teal-600">Anytime.</span>
+              <span className="text-teal-300">Anytime.</span>
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-200 sm:text-lg">
               Kodisha is the trusted marketplace where owners list apartments, cars, cameras, tools, fashion and more — and renters book, pay and return safely.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => setPage("register-renter")}
-                className="inline-flex items-center justify-center rounded-full bg-teal-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-600/25 transition hover:bg-teal-700"
+                className="inline-flex items-center justify-center rounded-full bg-teal-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-400"
               >
                 Start renting
               </button>
               <button
                 onClick={() => setPage("register-owner")}
-                className="inline-flex items-center justify-center rounded-full border-2 border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 transition hover:border-teal-300 hover:bg-teal-50/50"
+                className="inline-flex items-center justify-center rounded-full border-2 border-white/40 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
               >
                 List your items →
               </button>
             </div>
             <div className="mt-10">
-              <StoreButtons />
+              <StoreButtons light />
             </div>
           </div>
-          <div className="relative">
-            <img
-              src="/categories/hero-collage.jpg"
-              alt="Rent almost anything"
-              className="w-full rounded-2xl shadow-2xl shadow-slate-200/80"
-            />
+        </div>
+      </section>
+
+      {/* Image collage strip */}
+      <section className="bg-white py-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { src: "/categories/real-estate.jpg", label: "Real Estate" },
+              { src: "/categories/vehicles.jpg", label: "Vehicles" },
+              { src: "/categories/electronics.jpg", label: "Electronics" },
+              { src: "/categories/tools.jpg", label: "Tools" },
+            ].map((item) => (
+              <div key={item.label} className="group relative overflow-hidden rounded-xl">
+                <img src={item.src} alt={item.label} className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-2 left-3 text-sm font-semibold text-white">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -409,11 +425,13 @@ function Home({ setPage }: { setPage: (p: Page) => void }) {
       {/* Download strip */}
       <section className="bg-gradient-to-br from-teal-700 via-teal-800 to-teal-900 py-14 text-white">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="text-2xl font-bold sm:text-3xl">Get the Kodisha app</h2>
-          <p className="mt-2 text-teal-100">Available on Google Play and the App Store</p>
+          <img src="/logo.png" alt="" className="mx-auto mb-4 h-14 w-14 object-contain brightness-0 invert" />
+          <h2 className="text-2xl font-bold sm:text-3xl">Download Kodisha</h2>
+          <p className="mt-2 text-teal-100">Get the full experience on Google Play and the App Store</p>
           <div className="mt-8 flex justify-center">
             <StoreButtons light />
           </div>
+          <p className="mt-6 text-sm text-teal-200/80">Free to download · Renters & Owners</p>
         </div>
       </section>
     </>
