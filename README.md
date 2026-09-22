@@ -1,17 +1,51 @@
-# React + Vite
+# Kodisha Landing — with hero + all category images
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Install into your project
 
-Currently, two official plugins are available:
+1. Copy `src/App.jsx` over your existing `src/App.jsx`
+2. Copy `src/index.css` and `src/main.jsx` if needed
+3. Copy the entire `public/` folder into your project root `public/`:
+   - public/logo.png
+   - public/hero-bg.jpg
+   - public/categories/*.jpg  (all 12 images)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Required public files
 
-## React Compiler
+```
+public/
+  logo.png
+  hero-bg.jpg
+  categories/
+    real-estate.jpg
+    vehicles.jpg
+    electronics.jpg
+    tools.jpg
+    home-lifestyle.jpg
+    sports.jpg
+    fashion.jpg
+    events.jpg
+    hero-collage.jpg
+    overview.jpg
+    agreement.jpg
+    rent-sign.jpg
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tailwind
 
-## Expanding the Oxlint configuration
+If build fails on `@import "tailwindcss"`:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
-# kodisha_website
+```bash
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Ensure `tailwind.config.js` has:
+```js
+content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"]
+```
+
+Or for Tailwind v4:
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+and add `tailwindcss()` to vite plugins, then change index.css first line to `@import "tailwindcss";`
