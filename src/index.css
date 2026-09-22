@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* If using Tailwind v4 + @tailwindcss/vite, use: @import "tailwindcss"; */
-/* If using Tailwind v3, use the three lines below: */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
