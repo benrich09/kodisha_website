@@ -133,15 +133,21 @@ function Navbar({ page, setPage, overHero }) {
         </div>
 
         {open && (
-          <div className={`space-y-1 border-t py-4 pb-5 md:hidden ${solid ? 'border-slate-100' : 'border-white/20'}`}>
-            {link('home', 'Home')}
-            {link('services', 'Discover')}
-            {link('how', 'How it works')}
-            {link('about', 'About')}
-            {link('contact', 'Contact')}
-            <div className="space-y-2 pt-3">
-              <button onClick={() => { setPage('register-renter'); setOpen(false) }} className="w-full rounded-xl bg-teal-50 py-3 text-sm font-semibold text-teal-700">Register as Renter</button>
-              <button onClick={() => { setPage('register-owner'); setOpen(false) }} className="w-full rounded-xl bg-teal-600 py-3 text-sm font-semibold text-white">Register as Owner</button>
+          <div className="md:hidden">
+            <div className={`space-y-1 border-t py-4 pb-5 rounded-b-2xl backdrop-blur-xl ${
+              solid
+                ? 'border-slate-100 bg-white/95 shadow-lg'
+                : 'border-white/20 bg-slate-900/80 shadow-xl'
+            }`}>
+              {link('home', 'Home')}
+              {link('services', 'Discover')}
+              {link('how', 'How it works')}
+              {link('about', 'About')}
+              {link('contact', 'Contact')}
+              <div className="space-y-2 px-1 pt-3">
+                <button onClick={() => { setPage('register-renter'); setOpen(false) }} className="w-full rounded-xl bg-teal-50 py-3 text-sm font-semibold text-teal-700">Register as Renter</button>
+                <button onClick={() => { setPage('register-owner'); setOpen(false) }} className="w-full rounded-xl bg-teal-600 py-3 text-sm font-semibold text-white">Register as Owner</button>
+              </div>
             </div>
           </div>
         )}
@@ -277,12 +283,12 @@ function Home({ setPage }) {
 function Services() {
   return (
     <div>
-      <section className="relative min-h-[70vh] overflow-hidden sm:min-h-[75vh]">
+      <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/categories/overview.jpg" alt="" className="h-full w-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/60 to-teal-900/50" />
+          <img src="/hero-bg.jpg" alt="" className="h-full w-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/65 to-teal-900/40" />
         </div>
-        <div className="relative mx-auto flex min-h-[70vh] max-w-6xl flex-col justify-center px-4 pb-16 pt-28 sm:min-h-[75vh] sm:px-6">
+        <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-4 pb-16 pt-28 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">Discover</p>
           <h1 className="mt-3 max-w-xl text-3xl font-bold text-white sm:text-4xl lg:text-5xl">What you can rent on Kodisha</h1>
           <p className="mt-4 max-w-lg text-slate-200">Eight major categories — from homes and cars to cameras, tools, fashion and event gear.</p>
